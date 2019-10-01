@@ -1,0 +1,22 @@
+{
+  "name": "biblioteca",
+  "version": "1.0.0",
+  "description": "Sistema administrativo para controle de biblioteca.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "biblioteca",
+    "controle",
+    "administrativo"
+  ],
+  "author": "Diego de Abreu Porcellis",
+  "license": "ISC",
+  "dependencies": {
+    "cookie-parser": "^1.4.4",
+    "ejs": "^2.7.1",
+    "express": "^4.17.1",
+    "mongoose": "^5.7.1"
+  }
+}
