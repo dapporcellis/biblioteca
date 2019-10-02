@@ -12,7 +12,7 @@ app.use(bodyparser.json())
 app.use(bodyparser.urlencoded({extended:false}))
 
 app.set("view engine", "ejs")
-app.set(express.static(path.join(__dirname, "publica")))
+app.use(express.static(path.join(__dirname, "publica")))
 
 app.listen(3000,function(){
     console.log('O servidor esta funcionando!')
