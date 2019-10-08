@@ -1,0 +1,54 @@
+<%- include('../cabecalho') -%>
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <h2>GENEROS</h2>
+        </div>
+        <!-- Hover Rows -->
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="header">
+                        <h2>
+                            GENEROS
+                            <small>Estes são os generos cadastrados no sistema.</small>
+                        </h2>                        
+                    </div>
+                    <div class="body table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>GENERO</th>
+                                    <th>EDITA</th>
+                                    <th>DELETA</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% Generos.forEach(function(genero){ %>
+                                <tr>
+                                    <th scope="row"><%=genero._id%></th>
+                                    <td><%=genero.nome%></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>  
+                                <%});%>                              
+                            </tbody>
+                            <tfoot>
+                                <% if(typeof msg !== "undefined"){ %>
+                                    <div class="alert bg-green alert-dismissible" role="alert">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <%=msg%>
+                                    </div>
+                                <% } %>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Hover Rows -->
+      
+    </div>
+</section>
+<%- include('../rodape') -%>

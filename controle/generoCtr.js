@@ -1,7 +1,18 @@
 var genero = require('../modelo/genero')
 
-function listar(req,res){
 
+//middleware para buscar generos
+function getGeneros(req,res,next){
+    genero.find({}).lean().exec(function(err,docs){
+        req.generos = docs
+        next()
+    })
+}
+
+function listar(req,res){
+    genero.find({}).lean().exec(function(err,docs){
+        res.render('genero/list.ejs',{"Generos" : req.generos})
+    })
 }
 
 function filtrar(req,res){
@@ -18,9 +29,13 @@ function adiciona(req,res){
     })
     novoGenero.save(function(err){
         if(err){
-            res.render('genero/list.ejs', { msg: "Problema ao salvar!"})
+            genero.find({}).lean().exec(function(err,docs){
+                res.render('genero/list.ejs', { msg: "Problema ao salvar!", Generos: docs })
+            })            
         }else{
-            res.render('genero/list.ejs', { msg: "Adicionado com sucesso!"})
+            genero.find({}).lean().exec(function(err,docs){
+                res.render('genero/list.ejs', { msg: "Adicionado com sucesso!", Generos: docs })
+            })   
         }
     })
 }
@@ -44,5 +59,6 @@ module.exports = {
     adiciona,
     abrirEdita,
     edita,
-    deleta
+    deleta,
+    getGeneros
 }
