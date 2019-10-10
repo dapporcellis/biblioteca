@@ -29,8 +29,16 @@
                                 <tr>
                                     <th scope="row"><%=genero._id%></th>
                                     <td><%=genero.nome%></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>
+                                        <a href="/genero/edit/<%=genero._id%>" class="btn btn-warning btn-circle-lg waves-effect waves-circle waves-float">
+                                            <i class="material-icons">edit</i>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="/genero/del/<%=genero._id%>" class="btn btn-danger btn-circle-lg waves-effect waves-circle waves-float">
+                                            <i class="material-icons">delete</i>
+                                        </a>
+                                    </td>
                                 </tr>  
                                 <%});%>                              
                             </tbody>

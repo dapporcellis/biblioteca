@@ -1,6 +1,5 @@
 var genero = require('../modelo/genero')
 
-
 //middleware para buscar generos
 function getGeneros(req,res,next){
     genero.find({}).lean().exec(function(err,docs){
@@ -41,14 +40,31 @@ function adiciona(req,res){
 }
 
 function abrirEdita(req,res){
-
+    genero.findById(req.params.id,function(err,genero){
+        res.render('genero/edit.ejs',{'genero':genero});
+    })    
 }
 
 function edita(req,res){
-
+    genero.findByIdAndUpdate(req.params.id, {nome:req.body.nome},function(err){
+        if(err){
+            genero.find({}).lean().exec(function(err,docs){
+                res.render('genero/list.ejs', { msg: "Problema ao editar!", Generos: docs })
+            })            
+        }else{
+            genero.find({}).lean().exec(function(err,docs){
+                res.render('genero/list.ejs', { msg: "Editado com sucesso!", Generos: docs })
+            })   
+        }
+    })
 }
 
 function deleta(req,res){
+    genero.findByIdAndDelete(req.params.id,function(){
+        genero.find({}).lean().exec(function(err,docs){
+            res.render('genero/list.ejs', { msg: "Removido com sucesso!", Generos: docs })
+        })
+    })
 
 }
 
