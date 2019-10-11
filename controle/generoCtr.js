@@ -10,12 +10,15 @@ function getGeneros(req,res,next){
 
 function listar(req,res){
     genero.find({}).lean().exec(function(err,docs){
-        res.render('genero/list.ejs',{"Generos" : req.generos})
+        res.render('genero/list.ejs',{"Generos" : docs})
     })
 }
 
 function filtrar(req,res){
-
+    genero.find({ nome : new RegExp(req.body.pesquisa, 'i') })
+    .lean().exec(function(err,docs){
+        res.render('genero/list.ejs',{"Generos" : docs})
+    })
 }
 
 function abrirAdiciona(req,res){
