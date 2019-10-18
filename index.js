@@ -4,7 +4,7 @@ var cookieparser = require('cookie-parser')
 var path = require('path')
 const app = express()
 var generoRoute = require('./routes/generoRoute')
-
+var autorRoute = require('./routes/autorRoute')
 
 app.use(cookieparser())
 
@@ -19,3 +19,4 @@ app.listen(3000,function(){
 })
 
 app.use('/genero',generoRoute)
+app.use('/autor',autorRoute)
