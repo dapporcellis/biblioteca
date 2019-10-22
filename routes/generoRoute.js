@@ -1,6 +1,6 @@
 var express = require('express')
 var route = express.Router()
-var generoCtr = require('../controle/generoCtr')
+var generoCtr = require('../control/generoCtr')
 
 // rota para listar todos usando middleware
 //route.get('/',generoCtr.getGeneros, generoCtr.listar)

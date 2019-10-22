@@ -1,6 +1,6 @@
 var express = require('express')
 var route = express.Router()
-var editoraCtr = require('../controle/editoraCtr')
+var editoraCtr = require('../control/editoraCtr')
 var multer = require('../config/multerConfig')
 
 //rota para listar todos usando middleware
