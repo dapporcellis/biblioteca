@@ -2,14 +2,14 @@
 <section class="content">
     <div class="container-fluid">
         <div class="block-header">
-            <h2>AUTOR</h2>
+            <h2>EDITORAS</h2>
         </div>
         <!-- Hover Rows -->
         <div class="row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
                     <div class="header">
-                        <form action="/autor" method="POST">
+                        <form action="/editora" method="POST">
                             <div class="row">
                                 <div class="col-md-10">
                                     <div class="form-group">
@@ -30,30 +30,30 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>AUTOR</th>
-                                    <th>NACIONALIDADE</th>
-                                    <th>DATA DE NASCIMENTO</th>
+                                    <th>EDITORA</th>
+                                    <th>ENDEREÇO</th>
+                                    <th>DATA DE FUNDAÇÃO</th>
                                     <th>FOTO</th>
                                     <th>EDITA</th>
                                     <th>DELETA</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <% Autores.forEach(function(autor){ %>
+                                <% Editoras.forEach(function(editora){ %>
                                 <tr>
-                                    <th scope="row"><%=autor._id%></th>
-                                    <td><%=autor.nome%></td>
-                                    <td><%=autor.nacionalidade%></td>
-                                    <td><%=autor.datanasc.getDate() + "/" + autor.datanasc.getMonth() + "/" + autor.datanasc.getFullYear()%></td>
-                                    <td><img style="height: 50px;" src="/<%=autor.foto%>"></td>
+                                    <th scope="row"><%=editora._id%></th>
+                                    <td><%=editora.nome%></td>
+                                    <td><%=editora.endereco%></td>
+                                    <td><%=editora.datafundacao.getDate() + "/" + editora.datafundacao.getMonth() + "/" + editora.datafundacao.getFullYear()%></td>
+                                    <td><img style="height: 50px;" src="/<%=editora.foto%>"></td>
                                     <td>
-                                        <a href="/autor/edit/<%=autor._id%>"
+                                        <a href="/editora/edit/<%=editora._id%>"
                                             class="btn btn-warning btn-circle-lg waves-effect waves-circle waves-float">
                                             <i class="material-icons">edit</i>
                                         </a>
                                     </td>
                                     <td>
-                                        <a href="/autor/del/<%=autor._id%>"
+                                        <a href="/editora/del/<%=editora._id%>"
                                             class="btn btn-danger btn-circle-lg waves-effect waves-circle waves-float">
                                             <i class="material-icons">delete</i>
                                         </a>

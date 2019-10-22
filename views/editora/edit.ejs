@@ -2,7 +2,7 @@
 <section class="content">
     <div class="container-fluid">
         <div class="block-header">
-            <h2>AUTOR</h2>
+            <h2>EDITORA</h2>
         </div>
         <!-- Horizontal Layout -->
         <div class="row clearfix">
@@ -10,11 +10,23 @@
                 <div class="card">
                     <div class="header">
                         <h2>
-                            CADASTRAR AUTOR
+                            EDITAR EDITORA
                         </h2>                            
                     </div>
                     <div class="body">
                         <form class="form-horizontal" method="POST" enctype="multipart/form-data">
+                            <div class="row clearfix">
+                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                    <label for="nome">ID</label>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" readonly name="id" id="id" class="form-control" placeholder="Id da editora" value="<%=editora._id%>" >
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="row clearfix">
                                 <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                     <label for="nome">Nome</label>
@@ -22,43 +34,43 @@
                                 <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="nome" id="nome" class="form-control" placeholder="Nome do autor">
+                                            <input type="text" name="nome" id="nome" class="form-control" placeholder="Nome da editora" value="<%=editora.nome%>">
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="row clearfix">
                                 <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                    <label for="nacionalidade">Nacionalidade</label>
+                                    <label for="nacionalidade">Endereço</label>
                                 </div>
                                 <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="nacionalidade" id="nacionalidade" class="form-control" placeholder="Nacionalidade do autor">
+                                            <input type="text" name="endereco" id="endereco" class="form-control" placeholder="Endereço da editora" value="<%=editora.endereco%>">
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="row clearfix">
                                 <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                    <label for="datanasc">Data de Nascimento</label>
+                                    <label for="datanasc">Data de fundação</label>
                                 </div>
                                 <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="date" name="datanasc" id="datanasc" class="form-control" placeholder="Data de nascimento">
+                                            <input type="date" name="datafundacao" id="datafundacao" class="form-control" placeholder="Data de fundação" value="<%=editora.datafundacao.toISOString().split('T')[0]%>">
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="row clearfix">
                                 <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                    <label for="foto">Foto do Autor</label>
+                                    <label for="foto">Foto da Editora</label>
                                 </div>
                                 <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="file" required name="foto" id="foto" class="form-control" placeholder="Foto do autor">
+                                            <input type="file" required name="foto" id="foto" class="form-control" placeholder="Foto da Editora">
                                         </div>
                                     </div>
                                 </div>

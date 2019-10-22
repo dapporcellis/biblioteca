@@ -2,7 +2,7 @@ var multer = require('multer')
 
 const storage = multer.diskStorage({
     destination: function(req, file, cb){
-        let path = './publica/'
+        let path = './publica/arquivos/'
         cb(null,path)
     },
     filename: function(req,file,cb){

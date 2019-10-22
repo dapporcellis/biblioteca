@@ -22,7 +22,7 @@ route.post('/add',multer.single('foto'), autorCtr.adiciona)
 route.get('/edit/:id', autorCtr.abrirEdita)
 
 //rota para editar
-route.post('/edit/:id', autorCtr.edita)
+route.post('/edit/:id',multer.single('foto'), autorCtr.edita)
 
 //rota para deletar
 route.get('/del/:id', autorCtr.deleta)
