@@ -6,6 +6,7 @@ const app = express()
 var generoRoute = require('./routes/generoRoute')
 var autorRoute = require('./routes/autorRoute')
 var editoraRoute = require('./routes/editoraRoute')
+var livroRoute = require('./routes/livroRoute')
 
 app.use(cookieparser())
 
@@ -22,3 +23,4 @@ app.listen(3000,function(){
 app.use('/genero',generoRoute)
 app.use('/autor',autorRoute)
 app.use('/editora',editoraRoute)
+app.use('/livro',livroRoute)
