@@ -12,25 +12,42 @@ function getLivros(req, res, next) {
 }
 
 function listar(req, res) {
-    livro.find({}).populate('genero').populate('editora').populate('autores').lean().exec(function (err, docs) {
-        res.render('livro/list.ejs', { "Livros": docs })
-    })
+    livro
+        .find({})
+        .populate('genero')
+        .populate('editora')
+        .populate('autores')
+        .lean()
+        .exec(function (err, docs) {
+            res.render('livro/list.ejs', { "Livros": docs })
+        })
 }
 
 function filtrar(req, res) {
-    livro.find({ nome: new RegExp(req.body.pesquisa, 'i') }).populate('genero').populate('editora').populate('autores')
-        .lean().exec(function (err, docs) {
+    livro
+        .find({ titulo: new RegExp(req.body.pesquisa, 'i') })
+        .populate('genero')
+        .populate('editora')
+        .populate('autores')
+        .lean()
+        .exec(function (err, docs) {
             res.render('livro/list.ejs', { "Livros": docs })
         })
 }
 
 function abrirAdiciona(req, res) {
-    editora.find({}).lean().exec(
-        function (e, editoras) {
-            autor.find({}).lean().exec(
-                function (e, autores) {
-                    genero.find({}).lean().exec(
-                        function (e, generos) {
+    editora
+        .find({})
+        .lean()
+        .exec(function (e, editoras) {
+            autor
+                .find({})
+                .lean()
+                .exec(function (e, autores) {
+                    genero
+                        .find({})
+                        .lean()
+                        .exec(function (e, generos) {
                             res.render("livro/add.ejs", { "Editoras": editoras, "Autores": autores, "Generos": generos })
                         });
                 });
@@ -68,18 +85,18 @@ function abrirEdita(req, res) {
                 function (e, autores) {
                     genero.find({}).lean().exec(
                         function (e, generos) {
-                            livro.findOne({_id:req.params.id}).populate('genero').populate('editora').populate('autores').exec(
+                            livro.findOne({ _id: req.params.id }).populate('genero').populate('editora').populate('autores').exec(
                                 function (err, livro) {
                                     res.render('livro/edit.ejs', { 'livro': livro, "Editoras": editoras, "Autores": autores, "Generos": generos });
                                 });
                         });
                 });
-        });   
+        });
 }
 
 function edita(req, res) {
-    livro.findByIdAndUpdate(req.params.id, 
-        { 
+    livro.findByIdAndUpdate(req.params.id,
+        {
             titulo: req.body.titulo,
             isbn: req.body.isbn,
             sinopse: req.body.sinopse,
@@ -88,16 +105,16 @@ function edita(req, res) {
             editora: req.body.editora,
             autores: req.body.autores
         }, function (err) {
-        if (err) {
-            livro.find({}).populate('genero').populate('editora').populate('autores').lean().exec(function (err, docs) {
-                res.render('livro/list.ejs', { msg: "Problema ao editar!", Livros: docs })
-            })
-        } else {
-            livro.find({}).populate('genero').populate('editora').populate('autores').lean().exec(function (err, docs) {
-                res.render('livro/list.ejs', { msg: "Editado com sucesso!", Livros: docs })
-            })
-        }
-    })
+            if (err) {
+                livro.find({}).populate('genero').populate('editora').populate('autores').lean().exec(function (err, docs) {
+                    res.render('livro/list.ejs', { msg: "Problema ao editar!", Livros: docs })
+                })
+            } else {
+                livro.find({}).populate('genero').populate('editora').populate('autores').lean().exec(function (err, docs) {
+                    res.render('livro/list.ejs', { msg: "Editado com sucesso!", Livros: docs })
+                })
+            }
+        })
 }
 
 function deleta(req, res) {

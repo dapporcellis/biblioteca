@@ -48,8 +48,14 @@
                                     <td><%=livro.isbn%></td>
                                     <td><%=livro.genero.nome%></td>
                                     <td><%=livro.editora.nome%></td>
-                                    <td><% livro.autores.forEach(function(autor){ %><%=autor.nome%><br><%});%><br></td>
-                                    <td><img style="height: 50px;" src="/arquivos/<%=livro.foto%>"></td>
+                                    <td>
+                                        <% livro.autores.forEach(function(autor){ %>
+                                            <%=autor.nome%><br>
+                                        <%});%><br>
+                                    </td>
+                                    <td>
+                                        <img style="height: 50px;" src="/arquivos/<%=livro.foto%>">
+                                    </td>
                                     <td>
                                         <a href="/livro/edit/<%=livro._id%>"
                                             class="btn btn-warning btn-circle-lg waves-effect waves-circle waves-float">
